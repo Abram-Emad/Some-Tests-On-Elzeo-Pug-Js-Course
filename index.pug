@@ -1,0 +1,103 @@
+doctype html 
+html(lang='en')
+    head 
+        meta(charset="utf-8")
+        meta(name='description', content='learning pug js')
+        block pageTitle    
+            title Pug Js tests
+        include includes/styles.pug
+        include includes/mixins.pug
+        include includes/myVars.pug
+    body 
+      block pageInfo 
+        main this is the main about us page
+      block pageContant
+        div(class="Main-Container")
+            +features("this is the coming feature")
+            .site: a(href="http://", target="_blank") our works
+            h2(class="title") Testing Pug Js 
+            // testing comment
+            //-
+                testing hidden comment
+            ul(class="Skills")
+                li(class=className) HTML
+                li(class="second " + className) CSS #{tagedText}
+                li JS #{theName}
+                li SASS !{tagedText}
+            +skillList
+            p#main Hello <b>World</b> and <strong>welcome</strong> to the new aera
+            p.main 
+                | Hello 
+                b World
+                |  and 
+                strong welcome
+                |  to the new aera
+            p.interpolation hello #[b(class="bold-text") world]
+            |
+            |
+            .
+              this text belong to the main div
+        form(class="test-form")
+            input(
+                type="text", 
+                name="Username"
+            ) 
+  
+            input(
+                type="email", 
+                name="Email"
+            ) 
+
+            input(
+                type="text", 
+                name="subj"
+            ) 
+            button(style={"background-color": 'black', "color": "white"}) send
+            button(style={"background-color": 'black', "color": "white"}) reset
+            
+        // how to hide tags
+        div= 'Hello <b>World</b> and <strong>welcome</strong> to the new aera'
+
+        //- looping and each in pug js
+        ul
+            - for (var x = 0; x <= 10; x++)
+              li iteam
+        
+        - var z = 0
+        ul 
+            while z < 20
+                li= z++
+
+        each val, index in mySkills 
+            div= index + ' + ' + val
+        else 
+            p there is no skills
+        
+        //- case in pug js
+        case friends
+            when 0 
+                p you have no friends
+            when 1 
+                p you have one friend
+            default 
+                p you have #{friends} friends
+
+        case friends
+            when 0 
+                - break
+            when 1 
+                p you have one friend
+            default 
+                p you have #{friends} friends
+        
+        case friends
+            when 0: p you have no friends
+            when 1: p you have one friend
+            default: p you have #{friends} friends
+            
+    include includes/scripts.pug
+            
+
+
+
+
